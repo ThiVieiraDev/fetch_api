@@ -1,21 +1,8 @@
-const informacoesClientes = [
-    {
-        cpf: 18875539081,
-        nome: "Jairo"
-    }, {
-        cpf: 18875539081,
-        nome: "Monica"
-    }
-
-]
-
 const corpoTabela = document.querySelector("[data-conteudo-tabela]");
-
-
 
 const exibeCliente = (cpf, nome) => {
     const linha = document.createElement('tr');
-    
+
     const conteudoLinha = `
         <td>${cpf}</td>
         <td>${nome}</td>
@@ -24,6 +11,9 @@ const exibeCliente = (cpf, nome) => {
     return linha;
 }
 
-informacoesClientes.forEach( indice => {
-    corpoTabela.appendChild(exibeCliente(indice.cpf,indice.nome))
-})
+listarClientes().then(exibe => {
+    exibe.forEach(indice => {
+        corpoTabela.appendChild(exibeCliente(indice.cpf, indice.nome))
+    })
+}
+)
